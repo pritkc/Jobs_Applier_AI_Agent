@@ -20,6 +20,7 @@ from aihawk.plugins import PluginError
 def main(resume: Path | None) -> None:
     """Give it your resume, get the jobs that fit, select them and apply."""
     # Imported here: the interface takes a moment to load, and --help should not wait for it.
+    import aihawk.fork  # noqa: F401  This fork's features, switched on: the one line it adds to upstream's code (docs/fork.md).
     from aihawk.tui import AIHawk
 
     AIHawk(default_home().resolve(), resume.resolve() if resume else None).run()
